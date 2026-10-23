@@ -11,11 +11,14 @@ Contact: europedrivecheck.support@gmail.com
 - The live email-confirmation callback is `auth-confirmed.html`.
 - The `docs/auth-confirmed.html` source matches the deployed callback. Preserve its token-discarding behavior and its self-contained assets when publishing other pages.
 
-## Policy review
+## Operating policy
 
-The proposed deletion timeline and resolved-request retention period are clearly marked as review proposals. They require the operator's decision before these pages are published as final policies.
+The operator accepted these rules on 24 October 2026:
 
-After the decisions and review, publish the website contents of `docs/` at the root of `auth-pages`, retaining the accepted callback. No Pages source-setting change is needed.
+- Aim to acknowledge deletion requests within 7 days and complete deletion within 30 days of receipt, explaining ownership/exception delays and following any shorter applicable legal deadline.
+- Remove resolved support/deletion correspondence and routine request records within 90 days of closure, except specific explained legal/dispute retention.
+
+Publish the website contents of `docs/` at the root of `auth-pages`, retaining the accepted callback. No Pages source-setting change is needed.
 
 This repository contains public website code only. Do not add private request records, account identifiers, app credentials or internal operator reports.
 
