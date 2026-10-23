@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+<title>Account confirmation · Europe Drive Check</title>
+<script>
+(() => {
+  const fragment = new URLSearchParams(location.hash.slice(1));
+  const query = new URLSearchParams(location.search);
+  const failed = fragment.has('error') || fragment.has('error_code') || query.has('error') || query.has('error_code');
+  const confirmed = !failed && fragment.has('access_token') && ['signup', 'email'].includes(fragment.get('type'));
+  // Discard tokens before showing the page. This page has no external assets,
+  // analytics, network calls, session storage or automatic app sign-in.
+  history.replaceState(null, '', location.pathname);
+  addEventListener('DOMContentLoaded', () => {
+    document.getElementById('title').textContent = failed ? 'Check your confirmation link' : confirmed ? 'Email confirmed' : 'Return to Europe Drive Check';
+    document.getElementById('message').textContent = failed
+      ? 'This link could not complete confirmation. It may have expired or already been used. Try signing in to the app. If it still asks for confirmation, use Help signing in → Resend confirmation email.'
+      : confirmed
+        ? 'Open the Europe Drive Check app and sign in with the email address and password you used to create your account.'
+        : 'Open the app and try signing in. If it asks you to confirm your email, open the confirmation link from your email. Opening this page directly does not confirm an account.';
+  });
+})();
+</script>
+<style>
+:root{font-family:system-ui,-apple-system,sans-serif;color:#132b40;background:#f2f5f8;font-size:17px;line-height:1.65}
+body{margin:0;padding:32px 18px}main{box-sizing:border-box;max-width:650px;margin:8vh auto;padding:32px;background:white;border:1px solid #dbe3eb;border-radius:18px}
+.brand{color:#164b85;font-weight:700;margin:0 0 28px}h1{font-size:clamp(1.65rem,5vw,2.2rem);line-height:1.25;margin:0 0 20px}p{margin:0 0 20px}a{color:#164b85;text-underline-offset:3px}nav{display:flex;gap:24px;flex-wrap:wrap;margin-top:28px}a:focus-visible{outline:3px solid #164b85;outline-offset:5px}.note{color:#465a6b;font-size:.9rem}
+</style>
+</head>
+<body>
+<main>
+<p class="brand">Europe Drive Check · Account help</p>
+<h1 id="title">Return to Europe Drive Check</h1>
+<p id="message">Open the app and try signing in. If it asks you to confirm your email, open the confirmation link from your email. Opening this page directly does not confirm an account.</p>
+<p class="note">Never send your password, confirmation link or recovery code to support.</p>
+<nav aria-label="Help"><a href="mailto:europedrivecheck.support@gmail.com">Email support</a></nav>
+</main>
+</body>
+</html>
